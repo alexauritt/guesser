@@ -1,7 +1,6 @@
-var SecretNumber = Backbone.Model.extend({
+Guesser.Models.SecretNumber = Backbone.Model.extend({
   urlRoot: '/secret_numbers',
-  value: 3,
   initialize: function() {
-    console.log("my num will be 3");
+    this.set('value', Math.floor(Math.random() * 100) + 1);
   }
 });

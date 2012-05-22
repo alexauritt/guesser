@@ -1,2 +1,0 @@
-<h1>I have a secret number</h1>
-<div>(the number is <%= 32 %>)</div>
