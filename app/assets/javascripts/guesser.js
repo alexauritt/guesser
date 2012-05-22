@@ -5,7 +5,7 @@ window.Guesser = {
   Routers: {},
   init: function() {
     new Guesser.Routers.Main({}); 
-    Backbone.history.start();
+    Backbone.history.start({pushState:true});
   }
 };
 

@@ -6,6 +6,7 @@ Guesser.Routers.SecretNumbers = Backbone.Router.extend({
   initialize: function() {},
   
   new: function() {
-    alert("there will be a new number")
+    view = new Guesser.Views.MainIndex();
+    $('#content').html(view.render().el)
   }
 });

@@ -1,11 +1,18 @@
 Guesser.Routers.Main = Backbone.Router.extend({
   routes: {
-    '': 'home'
+    '': 'home',
+    'guess': 'guess'
   },
   
-  initialize: function() {},
+  initialize: function() {
+  },
   
   home: function() {
-    console.log("you are home")
+    var view = new Guesser.Views.MainIndex();
+    $('#content').html(view.render().el);
+  },
+  
+  guess: function() {
+    console.log("you made a guess");
   }
 });
