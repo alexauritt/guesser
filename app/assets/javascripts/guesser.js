@@ -4,9 +4,11 @@ window.Guesser = {
   Views: {},
   Routers: {},
   init: function() {
-    return alert('Hello from Backbone!');
+    new Guesser.Routers.Main({}); 
+    Backbone.history.start();
   }
 };
+
 $(document).ready(function() {
   return Guesser.init();
 });
