@@ -4,12 +4,14 @@ Guesser.Routers.Main = Backbone.Router.extend({
     'guess': 'guess'
   },
   
-  initialize: function() {},
+  initialize: function(options) {
+    this.collection = options.collection;
+    this.secretNumber = options.secretNumber;
+    this.mainView = new Guesser.Views.MainIndex({collection: this.collection, secretNumber: this.secretNumber});    
+  },
   
   home: function() {
-    var secretNumber = new Guesser.Models.SecretNumber();
-    var view = new Guesser.Views.MainIndex({model: secretNumber});
-    $('body').html(view.render().el);
+    $('body').html(this.mainView.render().el);
   },
   
   guess: function() {
