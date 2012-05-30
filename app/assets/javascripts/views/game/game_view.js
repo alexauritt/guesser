@@ -6,11 +6,11 @@ Guesser.Views.GameView = Backbone.View.extend({
   initialize: function(options) {
     this.model = options.model;
     this.guesses = new Guesser.Collections.Guesses();
-    this.guessHistoryView = new Guesser.Views.GuessListView({collection: this.guesses});
+    this.guessListView = new Guesser.Views.GuessListView({collection: this.guesses});
   },
   render: function() {
     $(this.el).html(JST['main/index']({secretNumber: this.secretNumber}));
-    $guessList = this.$('#guess-list');
+    $(this.el).append(this.guessListView.render().el);
     return this;
   },
   createGuess: function(e) {
