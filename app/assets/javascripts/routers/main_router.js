@@ -5,9 +5,8 @@ Guesser.Routers.Main = Backbone.Router.extend({
   },
   
   initialize: function(options) {
-    this.collection = options.collection;
-    this.secretNumber = options.secretNumber;
-    this.mainView = new Guesser.Views.MainIndex({collection: this.collection, secretNumber: this.secretNumber});    
+    this.game = new Guesser.Models.Game();
+    this.mainView = new Guesser.Views.MainIndex({model: this.game});    
   },
   
   home: function() {
