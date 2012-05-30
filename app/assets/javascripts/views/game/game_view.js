@@ -1,12 +1,12 @@
 Guesser.Views.GameView = Backbone.View.extend({
   id: 'main',
   events: {
-    "submit #new_guess": "createGuess"
+    "submit #new_guess": "guess"
   },
   initialize: function(options) {
-    this.model = options.model;
+    _.bindAll(this, 'render', 'guess', 'clearGuessForm')
+    this.model = this.options.model;
     this.guesses = new Guesser.Collections.Guesses();
-    this.guesses.add(new Guesser.Models.Guess({secretNumber: this.model.secretNumber}));
     this.guessListView = new Guesser.Views.GuessListView({collection: this.guesses});
   },
   render: function() {
@@ -14,11 +14,16 @@ Guesser.Views.GameView = Backbone.View.extend({
     $(this.el).append(this.guessListView.render().el);
     return this;
   },
-  createGuess: function(e) {
+  guess: function(e) {
     e.preventDefault();
+
     var $newGuessForm = $('#new_guess');
     var $newGuessField = $('#new_guess_number', $newGuessForm);
-    this.collection.add(new Guesser.Models.Guess({secretNumber: this.secretNumber, number: $newGuessField.val()}));
+
+    var newGuess = new Guesser.Models.Guess({secretNumber: this.model.secretNumber, number: $newGuessField.val()});
+    this.guesses.add(newGuess);
+  },
+  clearGuessForm: function() {
     $newGuessForm[0].reset();
   }
 });
