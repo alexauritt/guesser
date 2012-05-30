@@ -9,7 +9,8 @@ Guesser.Views.GuessListView = Backbone.View.extend({
     this.collection.each(this.renderGuess);
     return this;
   },
-  renderGuess: function() {
-    console.log("rendering a guess");
+  renderGuess: function(guess) {
+    var view = new Guesser.Views.GuessView({model: guess});
+    this.$('table').append(view.render().el);
   }
 });

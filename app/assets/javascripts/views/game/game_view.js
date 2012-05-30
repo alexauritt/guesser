@@ -6,6 +6,7 @@ Guesser.Views.GameView = Backbone.View.extend({
   initialize: function(options) {
     this.model = options.model;
     this.guesses = new Guesser.Collections.Guesses();
+    this.guesses.add(new Guesser.Models.Guess({secretNumber: this.model.secretNumber}));
     this.guessListView = new Guesser.Views.GuessListView({collection: this.guesses});
   },
   render: function() {
