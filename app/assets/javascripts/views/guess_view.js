@@ -1,7 +1,11 @@
 Guesser.Views.GuessView = Backbone.View.extend({
-  tagName: 'li',
+  tagName: 'tr',
   class: 'guess',
+  initialize: function(options) {
+    this.model = options.model;
+  },
   render: function() {
-    $(this.el).html("there is a guess");
+    $(this.el).html(JST['guess']());
+    return this;
   }  
 });
