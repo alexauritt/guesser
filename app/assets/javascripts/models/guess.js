@@ -18,6 +18,9 @@ Guesser.Models.Guess = Backbone.Model.extend({
       msg = Guesser.Models.Guess.Message.LOW;
     }
     return msg;
+  },
+  isCorrect: function() {
+    return (this.get('result') == Guesser.Models.Guess.Message.CORRECT);
   }
 });
 
