@@ -6,10 +6,15 @@ Guesser.Routers.Main = Backbone.Router.extend({
   
   initialize: function(options) {
     this.game = new Guesser.Models.Game();
-    this.gameView = new Guesser.Views.GameView({model: this.game});    
+    this.gameView = new Guesser.Views.GameView({model: this.game});
+    this.gameView.on("game:over", this.clearScreen)    
   },
   
   home: function() {
     $('body').append(this.gameView.render().el);
-  },  
+  },
+  
+  clearScreen: function() {
+    $('body').html("You are done.");
+  }
 });

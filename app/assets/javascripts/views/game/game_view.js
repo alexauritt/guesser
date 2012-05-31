@@ -21,9 +21,16 @@ Guesser.Views.GameView = Backbone.View.extend({
     var $newGuessField = $('#new_guess_number', $newGuessForm);
 
     var newGuess = new Guesser.Models.Guess({secretNumber: this.model.secretNumber, number: $newGuessField.val()});
+
+    this.clearGuessForm();
+    
     this.guesses.add(newGuess);
+    if (newGuess.isCorrect()) {
+      this.trigger("game:over");
+    }
   },
   clearGuessForm: function() {
+    var $newGuessForm = $('#new_guess');
     $newGuessForm[0].reset();
   }
 });
