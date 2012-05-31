@@ -11,7 +11,7 @@ Guesser.Routers.Main = Backbone.Router.extend({
   },
   
   home: function() {
-    $('body').append(this.gameView.render().el);
+    $('#game-view').replaceWith(this.gameView.render().el);
   },
   
   clearScreen: function() {
