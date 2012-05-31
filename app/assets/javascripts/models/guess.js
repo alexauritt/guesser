@@ -3,7 +3,7 @@ Guesser.Models.Guess = Backbone.Model.extend({
     _.bindAll(this, 'calculateResult');
     this.secretNumber = options.secretNumber;
     this.number = options.number;
-    this.result = this.calculateResult();
+    this.set('result', this.calculateResult());
   },
   calculateResult: function() {
     var msg = null;
