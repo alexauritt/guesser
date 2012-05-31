@@ -11,9 +11,5 @@ Guesser.Routers.Main = Backbone.Router.extend({
   
   home: function() {
     $('body').append(this.gameView.render().el);
-  },
-  
-  guess: function() {
-    console.log("you made a guess");
-  }
+  },  
 });
