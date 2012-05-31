@@ -5,13 +5,11 @@ Guesser.Routers.Main = Backbone.Router.extend({
   },
   
   initialize: function(options) {
-    this.game = new Guesser.Models.Game();
-    this.gameView = new Guesser.Views.GameView({model: this.game});
-    this.gameView.on("game:over", this.clearScreen)    
+    this.mainView = new Guesser.Views.MainView();
   },
   
   home: function() {
-    $('#game-view').replaceWith(this.gameView.render().el);
+    $('body').html(this.mainView.render().el);
   },
   
   clearScreen: function() {
