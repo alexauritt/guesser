@@ -12,7 +12,7 @@ Guesser.Views.GameView = Backbone.View.extend({
     this.on("game:over", this.clearScreen)
   },
   render: function() {
-    $(this.el).html(JST['index']({secretNumber: this.secretNumber}));
+    $(this.el).html(JST['game']({secretNumber: this.secretNumber}));
     $(this.el).append(this.guessListView.render().el);
     return this;
   },
