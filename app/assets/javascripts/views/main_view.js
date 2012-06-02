@@ -9,7 +9,7 @@ Guesser.Views.MainView = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(JST['main']());
-    this.$('#game-view').replaceWith(this.gameView.render().el);
+    this.$('#game').replaceWith(this.gameView.render().el);
     return this;    
   }
 });

@@ -1,5 +1,5 @@
 Guesser.Views.GameView = Backbone.View.extend({
-  id: 'game-view',
+  id: 'game',
   tagName: 'section',
   events: {
     "submit #new-guess-form": "guess"
@@ -34,5 +34,8 @@ Guesser.Views.GameView = Backbone.View.extend({
   clearGuessForm: function() {
     var $newGuessForm = $('#new-guess-form');
     $newGuessForm[0].reset();
+  },
+  clearScreen: function() {
+    // console.log('game over');
   }
 });
