@@ -13,7 +13,7 @@ Guesser.Views.GameView = Support.CompositeView.extend({
   },
   render: function() {
     var self = this;
-    $(this.el).html(JST['game']({secretNumber: this.secretNumber}));
+    $(this.el).html(JST['game/main']({secretNumber: this.secretNumber}));
     self.renderChild(this.guessListView);
     self.renderChild(this.panelView);
 
