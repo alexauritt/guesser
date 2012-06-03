@@ -4,11 +4,12 @@ Guesser.Routers.GameRouter = Backbone.Router.extend({
   },
   
   initialize: function(options) {
-    this.mainView = new Guesser.Views.HomeIndex();
+
   },
   
   index: function() {
-    $('body').html(this.mainView.render().el);
+    var view = new Guesser.Views.GameView();
+    $('body').html(view.render().el);
   },
   
   clearScreen: function() {

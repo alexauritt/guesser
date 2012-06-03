@@ -4,9 +4,7 @@ window.Guesser = {
   Views: {},
   Routers: {},
   init: function() {
-    this.guesses = new Guesser.Collections.Guesses();
-    this.secretNumber = new Guesser.Models.SecretNumber();
-    new Guesser.Routers.GameRouter({collection: this.guesses, secretNumber: this.secretNumber}); 
+    new Guesser.Routers.GameRouter(); 
     Backbone.history.start({pushState:true});
   }
 };
