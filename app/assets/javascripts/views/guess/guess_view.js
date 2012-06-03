@@ -5,7 +5,7 @@ Guesser.Views.GuessView = Backbone.View.extend({
     this.model = options.model;
   },
   render: function() {
-    $(this.el).html(JST['guess']({model: this.model}));
+    $(this.el).html(JST['game/guess']({model: this.model}));
     return this;
   }  
 });
