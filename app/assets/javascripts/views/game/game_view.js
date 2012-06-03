@@ -5,10 +5,10 @@ Guesser.Views.GameView = Backbone.View.extend({
     "submit #new-guess-form": "guess"
   },
   initialize: function(options) {
-    _.bindAll(this, 'render', 'guess', 'clearGuessForm')
+    _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'clearScreen')
     this.model = new Guesser.Models.Game();
     this.guessListView = new Guesser.Views.GuessListView({collection: this.model.get('guesses')});
-    this.on("game:over", this.clearScreen)
+    this.model.on("game:over", this.clearScreen);
   },
   render: function() {
     $(this.el).html(JST['game']({secretNumber: this.secretNumber}));
@@ -21,20 +21,16 @@ Guesser.Views.GameView = Backbone.View.extend({
     var $newGuessForm = $('#new-guess-form');
     var $newGuessField = $('#new_guess_number', $newGuessForm);
 
-    var newGuess = new Guesser.Models.Guess({secretNumber: this.model.get('secretNumber'), number: $newGuessField.val()});
+    var guessValue = $newGuessField.val();
 
     this.clearGuessForm();
-    
-    this.model.get('guesses').add(newGuess);
-    if (newGuess.isCorrect()) {
-      this.trigger("game:over");
-    }
+    this.model.addGuess(guessValue);    
   },
   clearGuessForm: function() {
     var $newGuessForm = $('#new-guess-form');
     $newGuessForm[0].reset();
   },
   clearScreen: function() {
-    // console.log('game over');
+    console.log('game is over');
   }
 });

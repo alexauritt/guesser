@@ -3,7 +3,7 @@ Guesser.Views.GuessListView = Backbone.View.extend({
   id: 'guess-list',
   initialize: function() {
     _.bindAll(this, 'render', 'renderGuess');
-    this.collection.bind('add', this.render);
+    this.collection.on('add', this.render);
   },
   render: function() {
     $(this.el).html(JST['guess_list']());
