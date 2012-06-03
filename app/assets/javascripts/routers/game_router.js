@@ -1,7 +1,6 @@
-Guesser.Routers.Main = Backbone.Router.extend({
+Guesser.Routers.GameRouter = Backbone.Router.extend({
   routes: {
-    '': 'index',
-    'guess': 'guess'
+    '': 'index'
   },
   
   initialize: function(options) {
