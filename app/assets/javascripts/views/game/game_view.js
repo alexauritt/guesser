@@ -1,4 +1,4 @@
-Guesser.Views.GameView = Backbone.View.extend({
+Guesser.Views.GameView = Support.CompositeView.extend({
   id: 'game',
   tagName: 'section',
   events: {
@@ -8,13 +8,20 @@ Guesser.Views.GameView = Backbone.View.extend({
     _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'clearScreen')
     this.model = new Guesser.Models.Game();
     this.guessListView = new Guesser.Views.GuessListView({game: this.model});
+    this.panelView = new Guesser.Views.PanelView({model: this.model});
     this.model.on("game:over", this.clearScreen);
   },
   render: function() {
+    var self = this;
     $(this.el).html(JST['game']({secretNumber: this.secretNumber}));
+    self.renderChild(this.guessListView);
+    self.renderChild(this.panelView);
+
     $(this.el).append(this.guessListView.render().el);
+    this.$('#panel').replaceWith(this.panelView.render().el);
     return this;
   },
+  
   guess: function(e) {
     e.preventDefault();
 
