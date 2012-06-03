@@ -4,7 +4,6 @@ Guesser.Routers.GameRouter = Backbone.Router.extend({
   },
   
   initialize: function(options) {
-
   },
   
   index: function() {
