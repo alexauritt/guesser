@@ -1,14 +1,14 @@
 Guesser.Routers.Main = Backbone.Router.extend({
   routes: {
-    '': 'home',
+    '': 'index',
     'guess': 'guess'
   },
   
   initialize: function(options) {
-    this.mainView = new Guesser.Views.MainView();
+    this.mainView = new Guesser.Views.HomeIndex();
   },
   
-  home: function() {
+  index: function() {
     $('body').html(this.mainView.render().el);
   },
   

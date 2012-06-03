@@ -1,4 +1,4 @@
-Guesser.Views.MainView = Backbone.View.extend({
+Guesser.Views.HomeIndex = Backbone.View.extend({
   id: 'main',
   initialize: function() {
     this.startNewGame();
