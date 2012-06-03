@@ -7,7 +7,7 @@ Guesser.Views.GameView = Backbone.View.extend({
   initialize: function(options) {
     _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'clearScreen')
     this.model = new Guesser.Models.Game();
-    this.guessListView = new Guesser.Views.GuessListView({collection: this.model.get('guesses')});
+    this.guessListView = new Guesser.Views.GuessListView({game: this.model});
     this.model.on("game:over", this.clearScreen);
   },
   render: function() {

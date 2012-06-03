@@ -14,5 +14,8 @@ Guesser.Models.Game = Backbone.Model.extend({
     if (newGuess.isCorrect()) {
       this.trigger("game:over");
     }
+  },
+  getGuessCollection: function() {
+    return this.get('guesses');
   }
 });
