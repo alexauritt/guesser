@@ -1,14 +1,15 @@
-Guesser.Routers.GameRouter = Backbone.Router.extend({
+Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
   routes: {
     '': 'index'
   },
   
   initialize: function(options) {
+    this.el = $('body')
   },
   
   index: function() {
     var view = new Guesser.Views.GameView();
-    $('body').html(view.render().el);
+    this.swap(view);
   },
   
   clearScreen: function() {
