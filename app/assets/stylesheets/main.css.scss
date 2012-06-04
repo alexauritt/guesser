@@ -7,7 +7,7 @@ audio:not([controls]) { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 html, button, input, select, textarea { font-family: sans-serif; color: white; }
-body { margin: 0; font-size: 1em; line-height: 1.4; background:#222;}
+body { margin: 0; font-size: 1em; line-height: 1.4; background: #222 image-url('background.png') top center;}
 
 ::-moz-selection { background: #ff4f67; color: #fff; text-shadow: none; }
 ::selection { background: #ff4f67; color: #fff; text-shadow: none; }
@@ -49,6 +49,12 @@ label { cursor: pointer; }
 legend { border: 0; *margin-left: -7px; padding: 0; white-space: normal; }
 button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; color:#222; }
 button, input { line-height: normal; }
+button,input {
+    &:focus{
+        outline:none;
+        background:#1c1c1c!important;
+    };
+}
 button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
 button[disabled], input[disabled] { cursor: default; }
 input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
@@ -76,8 +82,8 @@ th { text-align:left; }
     width:60%;
     margin:20px auto;
     padding:1.5em;
-    background:#222;
-    border:1px solid #1f1f1f;
+    background:rgba(34,34,34,.9);
+    border:1px solid #1c1c1c;
 }
 
 #panel {
@@ -93,7 +99,7 @@ th { text-align:left; }
     float:right;
 }
 
-#guess-count {
+#guess-count,#msg {
     margin-bottom:.5em;
     color:#00ccff;
     font-size:250%;
@@ -102,9 +108,11 @@ th { text-align:left; }
 }
 
 #msg {
-  padding-bottom:.5em;
+  margin-bottom:.5em;
   color:#ff00cc;
+  font-size:200%;
   text-transform:capitalize;
+  font-weight:bold;
 }
 .guess-title{
   width:25%;
@@ -133,9 +141,9 @@ input[type=text] {
 
 input[type=submit] {
     border:none;
-    background:#00cc00;
+    background:yellow;
     text-transform:uppercase;
-    color:white;
+    color:#00ccff;
     display:block;
     width:100%;
     padding:2em 0;
