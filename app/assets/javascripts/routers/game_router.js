@@ -10,9 +10,5 @@ Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
   index: function() {
     var view = new Guesser.Views.GameView();
     this.swap(view);
-  },
-  
-  clearScreen: function() {
-    $('body').html("You are done.");
-  }
+  },  
 });
