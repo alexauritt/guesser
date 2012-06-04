@@ -5,23 +5,30 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     "submit #new-guess-form": "guess"
   },
   initialize: function(options) {
-    _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'clearScreen')
+    _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'clearScreen');
+
     this.model = new Guesser.Models.Game();
-    this.guessListView = new Guesser.Views.GuessListView({game: this.model});
-    this.panelView = new Guesser.Views.PanelView({model: this.model});
     this.model.on("game:over", this.clearScreen);
   },
   render: function() {
-    var self = this;
-    $(this.el).html(JST['game/main']({secretNumber: this.secretNumber}));
-    self.renderChild(this.guessListView);
-    self.renderChild(this.panelView);
-
-    $(this.el).append(this.guessListView.render().el);
-    this.$('#panel').replaceWith(this.panelView.render().el);
+    this.renderTemplate();
+    this.renderChildren();
     return this;
+  },  
+  renderTemplate: function() {
+    $(this.el).html(JST['game/main']({secretNumber: this.secretNumber}));
   },
-  
+  renderChildren: function() {
+    var self = this;
+    var guessListView = new Guesser.Views.GuessListView({game: this.model});
+    var panelView = new Guesser.Views.PanelView({model: this.model});
+
+    self.renderChild(guessListView);
+    self.renderChild(panelView);
+    console.log("pan ch", panelView.el);
+    self.$('#guess-list').replaceWith(guessListView.el);
+    self.$('#panel').replaceWith(panelView.el);
+  },
   guess: function(e) {
     e.preventDefault();
 
@@ -38,6 +45,6 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     $newGuessForm[0].reset();
   },
   clearScreen: function() {
-    console.log('game is over');
+    this.leave();
   }
 });

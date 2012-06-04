@@ -1,5 +1,5 @@
 Guesser.Views.GuessListView = Backbone.View.extend({
-  tag: 'div',
+  tag: 'section',
   id: 'guess-list',
 
   initialize: function(options) {
