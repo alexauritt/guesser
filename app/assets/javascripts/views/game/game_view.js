@@ -54,6 +54,6 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     this.render();
   },
   saveGame: function() {
-    this.model.save({title: 'bookdasdf'})
+    this.model.save();
   }
 });
