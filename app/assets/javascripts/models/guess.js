@@ -7,11 +7,10 @@ Guesser.Models.Guess = Backbone.Model.extend({
   },
   calculateResult: function() {
     var msg = null;
-    var secret = this.secretNumber.get('number');
-    if ( this.number > secret ) {
+    if ( this.number > this.secretNumber ) {
       msg = Guesser.Models.Guess.Message.HIGH;
     }
-    else if (this.number == secret) {
+    else if (this.number == this.secretNumber) {
       msg = Guesser.Models.Guess.Message.CORRECT;
     }
     else {
