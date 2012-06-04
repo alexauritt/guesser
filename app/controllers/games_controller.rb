@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   respond_to :json
   def create
-    render :text => "I'ma tell you when I'm ready. When I'm ready, I'ma tell you."
+    @game = Game.new(params[:game])
+    @game.save ? respond_with(@game) : respond_with(@game, :status => :unprocessable_entity)
   end
 end
