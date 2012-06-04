@@ -4,7 +4,7 @@ Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
   },
   
   initialize: function(options) {
-    this.el = $('body')
+    this.el = $('#main')
   },
   
   index: function() {
