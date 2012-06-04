@@ -88,14 +88,23 @@ th { text-align:left; }
     padding:1em;
     @include rounded-corners;
 }
-#guessHistory {
+#guessHistory, #guess-count {
     width:45%;
     float:right;
 }
+
+#guess-count {
+    margin-bottom:1em;
+    color:#00ccff;
+    font-size:250%;
+    text-transform:capitalize;
+    font-weight:bold;
+}
+
 #msg {
   padding-bottom:.5em;
-  color:#ff0066;
-  text-transform:uppercase;
+  color:#ff00cc;
+  text-transform:capitalize;
 }
 .guess-title{
   width:25%;
@@ -123,7 +132,7 @@ input[type=text] {
 }
 
 input[type=submit] {
-    border:1px solid #00dd00;
+    border:none;
     background:#00cc00;
     text-transform:uppercase;
     color:white;
@@ -133,7 +142,7 @@ input[type=submit] {
     margin-top:1em;
     @include rounded-corners;
     &:hover {
-        background:#ccff00;
+        background:#01BE02;
     };
 }
 
@@ -146,6 +155,9 @@ input:-moz-placeholder {
     font-weight:bold;
 }
 
+#end-game {
+  display: none;
+}
 
 
 @media only screen and (min-width: 35em) {
