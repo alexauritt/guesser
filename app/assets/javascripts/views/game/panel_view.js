@@ -1,5 +1,5 @@
 Guesser.Views.PanelView = Backbone.View.extend({
-  id: 'panelly',
+  id: 'panel',
   tagName: 'section',
   initialize: function(options) {
     _.bindAll(this, 'render');

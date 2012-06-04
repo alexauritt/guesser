@@ -5,10 +5,9 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     "submit #new-guess-form": "guess"
   },
   initialize: function(options) {
-    _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'clearScreen');
+    _.bindAll(this, 'render', 'guess', 'clearGuessForm');
 
     this.model = new Guesser.Models.Game();
-    this.model.on("game:over", this.clearScreen);
   },
   render: function() {
     this.renderTemplate();
@@ -22,10 +21,12 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     var self = this;
     var guessListView = new Guesser.Views.GuessListView({game: this.model});
     var panelView = new Guesser.Views.PanelView({model: this.model});
+    var messageView = new Guesser.Views.MessageView({model: this.model});
 
+    self.renderChild(messageView);
     self.renderChild(guessListView);
     self.renderChild(panelView);
-    console.log("pan ch", panelView.el);
+    self.$('#message').replaceWith(messageView.el);
     self.$('#guess-list').replaceWith(guessListView.el);
     self.$('#panel').replaceWith(panelView.el);
   },
@@ -43,8 +44,5 @@ Guesser.Views.GameView = Support.CompositeView.extend({
   clearGuessForm: function() {
     var $newGuessForm = $('#new-guess-form');
     $newGuessForm[0].reset();
-  },
-  clearScreen: function() {
-    this.leave();
   }
 });
