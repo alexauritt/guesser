@@ -2,10 +2,11 @@ Guesser.Views.GameView = Support.CompositeView.extend({
   id: 'game',
   tagName: 'section',
   events: {
-    "submit #new-guess-form": "guess"
+    "submit #new-guess-form": "guess",
+    "click #save": "saveGame"
   },
   initialize: function(options) {
-    _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'startNewGame');
+    _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'startNewGame', 'saveGame');
 
     this.model = new Guesser.Models.Game();
     
@@ -51,5 +52,8 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     this.model = new Guesser.Models.Game();
     this.model.on("game:restart", this.startNewGame);
     this.render();
+  },
+  saveGame: function() {
+    this.model.save();
   }
 });

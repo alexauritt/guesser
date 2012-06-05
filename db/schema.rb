@@ -11,12 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516202059) do
-
-  create_table "random_numbers", :force => true do |t|
-    t.integer  "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 0) do
 
 end
