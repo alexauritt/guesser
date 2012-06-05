@@ -54,6 +54,7 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     this.render();
   },
   saveGame: function() {
-    this.model.save();
+    var userName = self.$('#end-game input#name').val();
+    this.model.save({'user': userName});
   }
 });

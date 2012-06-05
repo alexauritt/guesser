@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   respond_to :json
   def create
-    render :text => "I'ma tell you when I'm ready. When I'm ready, I'ma tell you."
+    # respond_with(Game.new(params[:game])
+    render :text => 'asdf'
   end
 end
