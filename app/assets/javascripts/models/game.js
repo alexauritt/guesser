@@ -9,10 +9,16 @@ Guesser.Models.Game = Backbone.Model.extend({
       secretNumber: this.get('secretNumber'),
       number: number
     });
-    this.get('guesses').add(newGuess);
 
-    if (newGuess.isCorrect()) {
-      this.trigger("game:over");
+    if (newGuess.isValid()) {      
+      this.get('guesses').add(newGuess);
+      this.trigger('guess:add');
+      if (newGuess.isCorrect()) {
+        this.trigger('game:over');
+      }
+    }
+    else {
+      this.trigger('error:input');
     }
   },
   getGuessCollection: function() {
