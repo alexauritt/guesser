@@ -1,7 +1,7 @@
 Guesser.Models.Guess = Backbone.Model.extend({
   initialize: function(options) {
     _.bindAll(this, 'calculateResult');
-    this.set('result', this.calculateResult(options.secretNumber));
+    this.set('result', this.calculateResult(options.secret_number));
   },
   validate: function(attrs) {
     if (attrs.number == '') {
@@ -17,12 +17,12 @@ Guesser.Models.Guess = Backbone.Model.extend({
       return "Needs to be an integer.";
     }
   },
-  calculateResult: function(secretNumber) {
+  calculateResult: function(secret_number) {
     var msg = null;
-    if ( this.get('number') > secretNumber ) {
+    if ( this.get('number') > secret_number ) {
       msg = Guesser.Models.Guess.Message.HIGH;
     }
-    else if (this.get('number') == secretNumber) {
+    else if (this.get('number') == secret_number) {
       msg = Guesser.Models.Guess.Message.CORRECT;
     }
     else {

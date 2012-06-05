@@ -1,12 +1,12 @@
 Guesser.Models.Game = Backbone.Model.extend({
   urlRoot: '/games',
   initialize: function() {
-    this.set('secretNumber', Guesser.Models.SecretNumberGenerator.getNumber());
+    this.set('secret_number', Guesser.Models.SecretNumberGenerator.getNumber());
     this.set('guesses', new Guesser.Collections.Guesses());
   },
   addGuess: function(number) {
     var newGuess = new Guesser.Models.Guess({
-      secretNumber: this.get('secretNumber'),
+      secret_number: this.get('secret_number'),
       number: number
     });
 
