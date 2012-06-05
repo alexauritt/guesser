@@ -10,6 +10,12 @@ Guesser.Models.Guess = Backbone.Model.extend({
     if (isNaN(attrs.number)) {
       return "Need a number";
     }
+    if (attrs.number < 1) {
+      return "Needs to be positive";
+    }
+    if (parseFloat(attrs.number) != parseInt(attrs.number)) {
+      return "Needs to be an integer.";
+    }
   },
   calculateResult: function(secretNumber) {
     var msg = null;
