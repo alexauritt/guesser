@@ -1,15 +1,22 @@
 Guesser.Models.Guess = Backbone.Model.extend({
   initialize: function(options) {
     _.bindAll(this, 'calculateResult');
-    this.number = options.number;
     this.set('result', this.calculateResult(options.secretNumber));
+  },
+  validate: function(attrs) {
+    if (attrs.number == '') {
+      return "No blankies.";
+    }
+    if (isNaN(attrs.number)) {
+      return "Need a number";
+    }
   },
   calculateResult: function(secretNumber) {
     var msg = null;
-    if ( this.number > secretNumber ) {
+    if ( this.get('number') > secretNumber ) {
       msg = Guesser.Models.Guess.Message.HIGH;
     }
-    else if (this.number == secretNumber) {
+    else if (this.get('number') == secretNumber) {
       msg = Guesser.Models.Guess.Message.CORRECT;
     }
     else {
