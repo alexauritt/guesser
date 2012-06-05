@@ -18,7 +18,7 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     return this;
   },  
   renderTemplate: function() {
-    $(this.el).html(JST['game/main']({secretNumber: this.secretNumber}));
+    $(this.el).html(JST['game/main']({secret_number: this.secret_number}));
   },
   renderChildren: function() {
     var self = this;
@@ -54,6 +54,7 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     this.render();
   },
   saveGame: function() {
-    this.model.save();
+    var userName = self.$('#end-game input#name').val();
+    this.model.save({'player_name': userName});
   }
 });
