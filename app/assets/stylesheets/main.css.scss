@@ -6,7 +6,7 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-html, button, input, select, textarea { font-family: sans-serif; color: white; }
+html, button, input, select, textarea { font-family: sans-serif; color: black; }
 body { margin: 0; font-size: 1em; line-height: 1.4; background: #222 image-url('background.png') top center;}
 
 ::-moz-selection { background: #ff4f67; color: #fff; text-shadow: none; }
@@ -52,7 +52,7 @@ button, input { line-height: normal; }
 button,input {
     &:focus{
         outline:none;
-        background:#1c1c1c!important;
+        background:rgba(34,34,34,.02)!important;
     };
 }
 button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
@@ -66,7 +66,7 @@ input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
 table { border-collapse: collapse; border-spacing: 0; }
-tr { border-bottom: 1px solid #333; }
+tr { border-bottom: 1px dashed #ccc; }
 td { vertical-align: top; }
 th { text-align:left; }
 
@@ -77,20 +77,27 @@ th { text-align:left; }
 	-webkit-border-radius:.25em;
 	border-radius:.25em;
 	}
-	
+
+header {
+  width:64%;
+  margin:40px auto 20px auto;
+  padding-bottom:15px;
+  border-bottom: 10px solid black;
+}	
 #main {
     width:60%;
     margin:20px auto;
     padding:1.5em;
-    background:rgba(34,34,34,.9);
-    border:1px solid #1c1c1c;
+    background:rgba(34,34,34,.1);
+    //border:1px solid #ccc;
+    @include rounded-corners;
 }
 
 #panel {
     width:45%;
     float:left;
-    background:#111;
-    border:1px solid black;
+    background:rgba(34,34,34,.05);
+    border:1px solid #ccc;
     padding:1em;
     @include rounded-corners;
 }
@@ -100,17 +107,19 @@ th { text-align:left; }
 }
 
 #guess-count,#msg {
-    margin-bottom:.5em;
-    color:#00ccff;
-    font-size:250%;
+    color:#fff;
+    font-size:100%;
     text-transform:capitalize;
     font-weight:bold;
+    
 }
-
+#guess-count {
+    margin-top:.5em;
+}
 #msg {
   margin-bottom:.5em;
-  color:#ff00cc;
-  font-size:200%;
+  color:#ff0066;
+  font-size:100%;
   text-transform:capitalize;
   font-weight:bold;
 }
@@ -118,39 +127,44 @@ th { text-align:left; }
   width:25%;
 }
 .guess-response {
-    color:yellow;
+    color:#666;
 }
 h1 {
-    color:#00ff00;
-    border-bottom:1px solid #00cc00;
-    font-size:150%;
-    padding-bottom:.5em;
+    color:white;
+    background:black;
+    padding:.25em 1em;
+    font-size:200%;
+    @include rounded-corners;
     margin-top:0;
+    text-align:center;
 }
 
 input[type=text] {
     border:none;
-    border-bottom:1px solid white;
-    background:#111;
-    color:white;
+    //border-bottom:4px solid black;
+    background:rgba(255,255,255,.4);
+    color:black;
     display:block;
     width:100%;
     font-size:450%;
     text-align:center;
+    -moz-border-radius:.05em;
+  	-webkit-border-radius:.05em;
+  	border-radius:.05em;
 }
 
 input[type=submit] {
     border:none;
-    background:yellow;
+    background:#ff0066;
     text-transform:uppercase;
-    color:#00ccff;
+    color:#fff;
     display:block;
     width:100%;
     padding:2em 0;
     margin-top:1em;
     @include rounded-corners;
     &:hover {
-        background:#01BE02;
+        background:#111;
     };
 }
 
@@ -167,6 +181,46 @@ input:-moz-placeholder {
   display: none;
 }
 
+.slide-up-boxes {
+  float:right;
+  //width:60%;
+  display:block;
+  overflow:hidden;
+  a {
+    float:left;
+    margin-right:20px;
+  }
+}
+.slide-up-boxes a { 
+	display: block; 
+	margin: 23px 0 20px 0; 
+	height: 50px;
+	width:60px;
+	overflow: hidden;
+	text-decoration:none;
+}
+
+.slide-up-boxes .under { 
+	color: #333; 
+	text-align: center;
+	height: 50px; 
+	 -webkit-transition: margin-top 0.2s ease-in; 
+	 -moz-transition: margin-top 0.2s ease-in; 
+	 -o-transition: margin-top 0.2s ease-in;
+}
+
+.slide-up-boxes a:hover .under { 
+	margin-top: -50px; 
+}
+
+.slide-up-boxes .over { 
+	position: relative; 
+	height: 30px; 
+	padding: 10px;
+	text-align:center;
+	line-height:30px;
+	color:#000;
+}
 
 @media only screen and (min-width: 35em) {
   
