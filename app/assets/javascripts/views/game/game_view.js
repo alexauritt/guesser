@@ -11,8 +11,6 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     this.model = new Guesser.Models.Game();
     
     this.model.on('game:restart', this.startNewGame);
-    this.model.on('error:input', this.setInputError);
-    this.model.on('guess:add', this.setInputValid);
   },
   render: function() {
     this.renderTemplate();
@@ -57,11 +55,5 @@ Guesser.Views.GameView = Support.CompositeView.extend({
   },
   saveGame: function() {
     this.model.save();
-  },
-  setInputValid: function() {
-    self.$('#new_guess_number.error').removeClass('error');
-  },
-  setInputError: function() {
-    self.$('#new_guess_number').addClass('error');
   }
 });
