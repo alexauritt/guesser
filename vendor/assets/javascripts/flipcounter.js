@@ -437,5 +437,5 @@ var flipCounter = function(d, options){
 	}
 	
 	// Start it up
-	initialDigitCheck(o.value);
+  // initialDigitCheck(o.value);
 };
