@@ -4,7 +4,8 @@ window.Guesser = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new Guesser.Routers.GameRouter(); 
+    var mainRouter = new Guesser.Routers.MainRouter();
+    var gameRouter = new Guesser.Routers.GameRouter();
     Backbone.history.start({pushState:true});
   }
 };

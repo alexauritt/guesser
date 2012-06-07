@@ -1,6 +1,6 @@
 Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
   routes: {
-    '': 'index'
+    'games': 'index'
   },
   
   initialize: function(options) {
