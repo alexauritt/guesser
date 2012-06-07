@@ -163,7 +163,13 @@ input[type=text] {
 
 input.error {
   background:rgba(255,255,255,.5) image-url('diag.png') top center!important;
-  
+  -moz-box-shadow: inset 0 2px 8px #ccc;
+   -webkit-box-shadow: inset 0 2px 8px #ccc;
+   box-shadow: inset 0 2px 8px #ccc;
+   -moz-text-shadow: 1px 1px 0 rgba(53,53,53,.3);
+   -webkit-text-shadow: 1px 1px 0 rgba(53,53,53,.3);
+   text-shadow: 1px 1px 0 rgba(53,53,53,.3);
+   color:#ff0066;
 }
 
 input[type=submit], button {
@@ -201,7 +207,15 @@ input:-moz-placeholder {
   overflow:hidden;
   a {
     float:left;
-    margin-right:20px;
+    width:50px!important;
+    height:50px;
+    margin-left:20px!important;
+    overflow:hidden;
+    border-radius: 600px;
+    background:none;
+      -webkit-border-radius: 600px;
+      -moz-border-radius: 600px;
+      -o-border-radius: 600px;
   }
 }
 .slide-up-boxes a { 
@@ -247,9 +261,12 @@ footer {
       text-align:right;
       a {
         text-decoration:none;
-        border-bottom:10px solid #fff;
+        //border-bottom:10px solid #fff;
         padding-bottom:3px;
-        color:#00cc00!important;
+        color:#333!important;
+        strong {
+          border-bottom:1px solid #ccc;
+        }
         &:hover {
           color:#004400!important;
         };
