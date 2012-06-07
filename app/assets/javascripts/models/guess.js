@@ -3,6 +3,12 @@ Guesser.Models.Guess = Backbone.Model.extend({
     _.bindAll(this, 'calculateResult');
     this.set('result', this.calculateResult(options.secret_number));
   },
+  toJSON: function () {
+    return {
+      'number': this.attributes.number,
+      'result': this.attributes.result
+    }
+  },
   validate: function(attrs) {
     if (attrs.number == '') {
       return "No blankies.";
