@@ -1,5 +1,6 @@
 Guesser.Models.Game = Backbone.Model.extend({
   urlRoot: '/games',
+  modelName: 'game',
   defaults: {
     'floor': 1,
     'ceiling': 10
@@ -9,15 +10,15 @@ Guesser.Models.Game = Backbone.Model.extend({
     this.guesses = new Guesser.Collections.Guesses();
   },
   toJSON: function() {
-    var json = {
-      game: _.clone(this.attributes)
-    }
-
-    json.game.guesses_attributes = this.guesses.map(function(guess) {
+    var guesses = this.guesses.map(function(guess) {
       return guess.toJSON();
     });
 
-    return json;
+    var hashWithRoot = {};
+    hashWithRoot[this.modelName] = this.attributes;
+    hashWithRoot[this.modelName]['guesses_attributes'] = guesses;
+
+    return _.clone(hashWithRoot);
   },
   addGuess: function(number) {
     var newGuess = new Guesser.Models.Guess({
