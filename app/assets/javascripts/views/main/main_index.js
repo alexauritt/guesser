@@ -11,6 +11,6 @@ Guesser.Views.MainIndex = Support.CompositeView.extend({
     $(this.el).html(JST['main/index']());    
   },
   startGame: function() {
-    Backbone.history.navigate("/games", {trigger: true});
+    Backbone.history.navigate("/games/new", {trigger: true});
   }
 });
