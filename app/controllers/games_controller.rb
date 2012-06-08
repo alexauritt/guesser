@@ -1,13 +1,13 @@
 class GamesController < ApplicationController
   respond_to :json, :html
   def create
-    @game = Game.new(params[:game])
-    @game.save ? respond_with(@game) : respond_with(@game, :status => :unprocessable_entity)
+    respond_with Game.create params[:game]
   end
-  def new
-  end
+
   def index
   end
+
   def show
+    respond_with Game.find params[:id]
   end
 end
