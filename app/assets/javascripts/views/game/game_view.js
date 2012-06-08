@@ -7,7 +7,6 @@ Guesser.Views.GameView = Support.CompositeView.extend({
   },
   initialize: function(options) {
     _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'startNewGame', 'saveGame');
-    this.model = new Guesser.Models.Game(options);
     
     this.model.on('game:restart', this.startNewGame);
   },

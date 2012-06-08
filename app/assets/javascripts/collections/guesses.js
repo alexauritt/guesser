@@ -1,4 +1,3 @@
 Guesser.Collections.Guesses = Backbone.Collection.extend({
-  model: Guesser.Models.Guess,
-  url: '/games'
+  model: Guesser.Models.Guess
 });

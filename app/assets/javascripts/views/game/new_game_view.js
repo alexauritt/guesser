@@ -5,13 +5,24 @@ Guesser.Views.NewGameView = Support.CompositeView.extend({
     "click button#start-game": "startNewGame",
   },
   initialize: function() {
-    _.bindAll(this, 'render', 'startNewGame');
+    _.bindAll(this, 'render', 'startNewGame', 'saved');
   },
   render: function () {
     $(this.el).html(JST['game/new_game_form']());
     return this;
   },
   startNewGame: function() {
-    console.log("start new game");
+    self.$('#start-game').attr('disabled', true);
+    var low = parseInt(self.$('#floor').val());
+    var high = parseInt(self.$('#ceiling').val());
+    var game = new Guesser.Models.Game({floor:low,ceiling:high});
+    game.save({},{success:this.saved, error: this.failure});
+  },
+  saved: function(model, response) {
+    this.collection.add(model);
+    Backbone.history.navigate("/games/" + model.id, {trigger: true});    
+  },
+  failure: function() {
+    console.log('failed');
   }
 });
