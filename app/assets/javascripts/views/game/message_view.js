@@ -6,7 +6,7 @@ Guesser.Views.MessageView = Backbone.View.extend({
     this.model.on("game:over", this.displayVictory);
   },
   render: function() {
-    $(this.el).html(JST['game/message']({}));
+    $(this.el).html(JST['game/message']({game:this.model}));
     return this;
   },
   displayVictory: function() {

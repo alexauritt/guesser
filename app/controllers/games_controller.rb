@@ -6,4 +6,6 @@ class GamesController < ApplicationController
   end
   def new
   end
+  def index
+  end
 end

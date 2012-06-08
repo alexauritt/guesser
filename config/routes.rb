@@ -1,6 +1,6 @@
 Guesser::Application.routes.draw do
   root :to => "main#index"
-  resources :games, :only => [:create, :new]
+  resources :games, :only => [:create, :new, :index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
