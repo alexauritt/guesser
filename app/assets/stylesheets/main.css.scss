@@ -73,9 +73,9 @@ th { text-align:left; padding-bottom: 8px}
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
 @mixin rounded-corners {
-  -moz-border-radius:.25em;
-	-webkit-border-radius:.25em;
-	border-radius:.25em;
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 	}
 
 header {
