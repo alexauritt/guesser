@@ -3,10 +3,10 @@ Guesser.Models.Game = Backbone.Model.extend({
   modelName: 'game',
   defaults: {
     'floor': 1,
-    'ceiling': 10
+    'ceiling': 100
   },
-  initialize: function() {
-    this.set('secret_number', Guesser.Models.SecretNumberGenerator.getNumber());
+  initialize: function(options) {
+    this.set('secret_number', Guesser.Models.SecretNumberGenerator.getNumber(options));
     this.guesses = new Guesser.Collections.Guesses();
   },
   toJSON: function() {

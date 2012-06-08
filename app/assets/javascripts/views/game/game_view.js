@@ -7,8 +7,7 @@ Guesser.Views.GameView = Support.CompositeView.extend({
   },
   initialize: function(options) {
     _.bindAll(this, 'render', 'guess', 'clearGuessForm', 'startNewGame', 'saveGame');
-
-    this.model = new Guesser.Models.Game();
+    this.model = new Guesser.Models.Game(options);
     
     this.model.on('game:restart', this.startNewGame);
   },
@@ -49,9 +48,7 @@ Guesser.Views.GameView = Support.CompositeView.extend({
     $newGuessForm[0].reset();
   },
   startNewGame: function() {
-    this.model = new Guesser.Models.Game();
-    this.model.on("game:restart", this.startNewGame);
-    this.render();
+    Backbone.history.navigate("/games/new", {trigger: true});
   },
   saveGame: function() {
     var userName = self.$('#end-game input#name').val();

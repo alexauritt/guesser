@@ -7,9 +7,8 @@ Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
   initialize: function(options) {
     this.el = $('#main')
   },
-  
-  index: function() {
-    var view = new Guesser.Views.GameView();
+  index: function(options) {
+    var view = new Guesser.Views.GameView(options);
     this.swap(view);
   },
   new: function() {
