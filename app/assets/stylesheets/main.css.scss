@@ -73,9 +73,9 @@ th { text-align:left; padding-bottom: 8px}
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
 @mixin rounded-corners {
-  -moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
+  -moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
 	}
 
 header {
@@ -120,10 +120,11 @@ header {
 }
 #middle {
     float:left;
+    font-weight:bold;
     text-align:center;
     width:20%;
-    font-size:300%;
-    line-height:220%;
+    font-size:350%;
+    line-height:200%;
     color:#333;
     -moz-text-shadow: 1px 1px 0 rgba(255,255,255,.9);
     -webkit-text-shadow: 1px 1px 0 rgba(255,255,255,.9);
@@ -201,6 +202,10 @@ h1 {
       padding: 2px 6px;
       @include rounded-corners;
     }
+}
+
+h1.big {
+    font-size:2em;
 }
 
 input[type=text] {
