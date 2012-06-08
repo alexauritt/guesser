@@ -114,6 +114,28 @@ header {
     box-shadow: 0 0px 150px rgba(0,1,0,.1);
 }
 
+#low {
+    float:left;
+    width:40%;
+}
+#middle {
+    float:left;
+    text-align:center;
+    width:20%;
+    font-size:300%;
+    line-height:220%;
+    color:#333;
+    -moz-text-shadow: 1px 1px 0 rgba(255,255,255,.9);
+    -webkit-text-shadow: 1px 1px 0 rgba(255,255,255,.9);
+    text-shadow: 1px 1px 0 rgba(255,255,255,.9);
+}
+#high {
+    float:right;
+    width:40%;
+}
+.padding {
+    padding:3em 4em!important;
+}
 #game {
     display:block;
 }
@@ -130,6 +152,8 @@ header {
     -moz-box-shadow: 0 1px 60px rgba(0,1,0,.1);
     -webkit-box-shadow: 0 1px 60px rgba(0,1,0,.1);
     box-shadow: 0 1px 60px rgba(0,1,0,.1);
+    display:block;
+    overflow:hidden;
 }
 
 
