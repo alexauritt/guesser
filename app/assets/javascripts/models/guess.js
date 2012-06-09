@@ -1,4 +1,6 @@
 Guesser.Models.Guess = Backbone.Model.extend({
+  urlRoot: '/guesses',
+  modelName: 'guess',
   initialize: function(options) {
     _.bindAll(this, 'calculateResult');
     this.set('result', this.calculateResult(options.secret_number));

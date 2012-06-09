@@ -18,8 +18,13 @@ Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
     this.swap(view);
   },
   show: function(gameId) {
-    var game = this.collection.get(gameId);
-    var view = new Guesser.Views.GameView({ model: game });
-    this.swap(view);
+    var that = this;
+    var game = this.collection.get(gameId) || new Guesser.Models.Game({id: gameId});
+    game.fetch({
+      success: function() {
+        var view = new Guesser.Views.GameView({ model: game });
+        that.swap(view);
+      }
+    });
   }
 });
