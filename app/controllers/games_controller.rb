@@ -8,6 +8,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    respond_with Game.find params[:id]
+    @game = Game.includes(:guesses).find(params[:id])
+    respond_with @game
   end
 end

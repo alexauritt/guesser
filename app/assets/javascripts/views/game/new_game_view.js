@@ -19,7 +19,6 @@ Guesser.Views.NewGameView = Support.CompositeView.extend({
     game.save({},{success:this.saved, error: this.failure});
   },
   saved: function(model, response) {
-    this.collection.add(model);
     Backbone.history.navigate("/games/" + model.id, {trigger: true});    
   },
   failure: function() {

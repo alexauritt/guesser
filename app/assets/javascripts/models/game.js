@@ -6,8 +6,14 @@ Guesser.Models.Game = Backbone.Model.extend({
     'ceiling': 100
   },
   initialize: function(options) {
-    _.bindAll(this, 'guessSaved');
-    this.set('secret_number', Guesser.Models.SecretNumberGenerator.getNumber(options));
+    _.bindAll(this, 'guessSaved', 'addGuess');
+    if (options && options.floor) {
+      this.set('floor', options.floor);
+    }
+    if (options && options.ceiling) {
+      this.set('ceiling', options.ceiling);
+    }
+    this.set('secret_number', Guesser.Models.SecretNumberGenerator.getNumber({floor: this.get('floor'), ceiling: this.get('ceiling')}));
     this.guesses = new Guesser.Collections.Guesses();
     
   },
@@ -15,17 +21,18 @@ Guesser.Models.Game = Backbone.Model.extend({
     var guesses = this.guesses.map(function(guess) {
       return guess.toJSON();
     });
-
+  
     var hashWithRoot = {};
     hashWithRoot[this.modelName] = this.attributes;
     hashWithRoot[this.modelName]['guesses_attributes'] = guesses;
-
+  
     return _.clone(hashWithRoot);
   },
   addGuess: function(number) {
+    var that = this;
     var newGuess = new Guesser.Models.Guess({
-      secret_number: this.get('secret_number'),
-      number: number
+      game: that,
+      number: number,
     });
     newGuess.save({},{success:this.guessSaved});
   },
