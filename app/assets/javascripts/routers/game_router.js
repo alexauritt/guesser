@@ -1,25 +1,27 @@
 Guesser.Routers.GameRouter = Support.SwappingRouter.extend({
   routes: {
-    'games': 'index',
     'games/new': 'new',
     'games/:id': 'show'
   },
   
   initialize: function(options) {
     this.el = $('#main');
-    this.collection = new Guesser.Collections.Games();
-  },
-  index: function(options) {
-    var view = new Guesser.Views.GameView(_.extend({collection: this.collection}, options));
-    this.swap(view);
   },
   new: function() {
-    var view = new Guesser.Views.NewGameView({collection: this.collection});
+    var view = new Guesser.Views.NewGameView({model: this.currentGame});
     this.swap(view);
   },
   show: function(gameId) {
+    var game;
+    var currentGame = Guesser.Models.GameManager.currentGame;
+    if (currentGame && currentGame.get('id') == gameId) {
+      game = currentGame;
+    }
+    else {
+      game = new Guesser.Models.Game({id: gameId});
+      Guesser.Models.GameManager.currentGame = game;
+    }
     var that = this;
-    var game = this.collection.get(gameId) || new Guesser.Models.Game({id: gameId});
     game.fetch({
       success: function() {
         var view = new Guesser.Views.GameView({ model: game });

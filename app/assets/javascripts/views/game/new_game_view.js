@@ -16,6 +16,7 @@ Guesser.Views.NewGameView = Support.CompositeView.extend({
     var low = parseInt(self.$('#floor').val());
     var high = parseInt(self.$('#ceiling').val());
     var game = new Guesser.Models.Game({floor:low,ceiling:high});
+    Guesser.Models.GameManager.currentGame = game;
     game.save({},{success:this.saved, error: this.failure});
   },
   saved: function(model, response) {
