@@ -6,7 +6,7 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-html, button, input, select, textarea { font-family: sans-serif; color: black; }
+html, button, input, select, textarea { font-family: courier, sans-serif; color: black; }
 body { margin: 0; font-size: 1em; line-height: 1.4; background: #222 image-url('background.png') top center;}
 
 ::-moz-selection { background: #ff4f67; color: #fff; text-shadow: none; }
@@ -223,7 +223,8 @@ input[type=text] {
     display:block;
     width:100%;
     font-size:450%;
-    line-height:150%;
+    line-height:180%;
+    padding-bottom:20px;
     text-align:center;
     -moz-border-radius:.05em;
   	-webkit-border-radius:.05em;
@@ -254,11 +255,19 @@ input[type=submit], button {
   	-webkit-border-radius:25px;
   	border-radius:25px;
   	@include container-shadow;
+  	-moz-text-shadow: -1px -1px 0 rgba(53,53,53,.3);
+    -webkit-text-shadow: -1px -1px 0 rgba(53,53,53,.3);
+    text-shadow: -1px -1px 0 rgba(53,53,53,.3);
     &:hover {
-        background:#111;
+        background:#c9d827;
     };
 }
 
+button#save {
+    background:#c9d827!important;
+    float:left;
+    margin-right:5px;
+}
 input::-webkit-input-placeholder{
     color:#fff;
     font-weight:normal;
