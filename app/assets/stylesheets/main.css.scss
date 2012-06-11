@@ -6,7 +6,7 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-html, button, input, select, textarea { font-family: sans-serif; color: black; }
+html, button, input, select, textarea { font-family: courier, sans-serif; color: black; }
 body { margin: 0; font-size: 1em; line-height: 1.4; background: #222 image-url('background.png') top center;}
 
 ::-moz-selection { background: #ff4f67; color: #fff; text-shadow: none; }
@@ -71,12 +71,18 @@ td { vertical-align: top; padding: 8px 0}
 th { text-align:left; padding-bottom: 8px}
 
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
-$highlight5:#ff0066;
+
 @mixin rounded-corners {
   -moz-border-radius:2px;
 	-webkit-border-radius:2px;
 	border-radius:2px;
 	}
+
+@mixin container-shadow {
+  -moz-box-shadow: 0 1px 60px rgba(0,1,0,.1);
+  -webkit-box-shadow: 0 1px 60px rgba(0,1,0,.1);
+  box-shadow: 0 1px 60px rgba(0,1,0,.1);
+}
 
 header {
   width:64%;
@@ -147,19 +153,18 @@ header {
 }
 #panel {
     background:rgba(255,255,255,.5);
-    border:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    //border-right:1px solid #ccc;
+    //border-left:1px solid #ccc;
     padding:1em;
-    @include rounded-corners;
-    -moz-box-shadow: 0 1px 60px rgba(0,1,0,.1);
-    -webkit-box-shadow: 0 1px 60px rgba(0,1,0,.1);
-    box-shadow: 0 1px 60px rgba(0,1,0,.1);
+    //@include rounded-corners;
+    @include container-shadow;
     display:block;
     overflow:hidden;
 }
 
-
 #guess-count,#msg {
-    color:#00ccff;
+    color:#9ed1e2;
     font-size:100%;
     text-transform:capitalize;
     //font-weight:bold;
@@ -167,7 +172,9 @@ header {
 }
 #guess-list {
     float:right;
-    width:48%;
+    width:44%;
+    background:rgba(255,255,255,.3);
+    padding:18px;
 }
 table {
     margin-bottom:.5em;
@@ -175,7 +182,7 @@ table {
 }
 #msg {
   margin-bottom:.5em;
-  color:#ff0066;
+  color:#d03725;
   font-size:100%;
   text-transform:capitalize;
   font-weight:bold;
@@ -189,14 +196,13 @@ table {
 h1 {
     color:white;
     background:black;
-    padding:.25em 1em;
-    font-size:150%;
-    @include rounded-corners;
-    margin:0 0 20px 0;
+    padding:1em;
+    font-size:130%;
+    text-transform:uppercase;
+    //@include rounded-corners;
+    margin:0;
     text-align:center;
-    -moz-text-shadow: -1px -1px 0 rgba(34,34,34,.9);
-    -webkit-text-shadow: -1px -1px 0 rgba(34,34,34,.9);
-    text-shadow: -1px -1px 0 rgba(34,34,34,.9);
+    @include container-shadow;
     span {
       background:rgba(255,255,255,.2);
       padding: 2px 6px;
@@ -217,7 +223,8 @@ input[type=text] {
     display:block;
     width:100%;
     font-size:450%;
-    line-height:150%;
+    line-height:180%;
+    padding-bottom:20px;
     text-align:center;
     -moz-border-radius:.05em;
   	-webkit-border-radius:.05em;
@@ -232,44 +239,35 @@ input.error {
    -moz-text-shadow: 1px 1px 0 rgba(53,53,53,.3);
    -webkit-text-shadow: 1px 1px 0 rgba(53,53,53,.3);
    text-shadow: 1px 1px 0 rgba(53,53,53,.3);
-   color:#ff0066;
+   color:#d03725;
 }
 
 input[type=submit], button {
     border:none;
-    background-color: $highlight5;
-    background-image: -webkit-linear-gradient(top, $highlight5, $highlight5*.95);
-    background-image: -moz-linear-gradient(top, $highlight5, $highlight5*.95);
-    background-image: linear-gradient(top, $highlight5, $highlight5*.95);
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)!important;
-    -webkit-transition: 0.1s linear all;
-    border: 1px solid #CCC;
-    display:inline-block;
-    padding:15px 0px;
-    text-align:center;
-    text-transform:uppercase;
-    &:hover {
-      background-color: $highlight5*.92;
-      background-image: -webkit-linear-gradient(top, $highlight5*.96, $highlight5*.85);
-      background-image: -moz-linear-gradient(top, $highlight5*.96, $highlight5*.85);
-      background-image: linear-gradient(top, $highlight5*.96, $highlight5*.85);
-    }
+    background:#d03725;
     text-transform:uppercase;
     color:#fff;
-    display:block;
-    width:100%;
-    padding:2em 0;
+    //display:block;
+    //width:100%;
+    padding:2em 3em;
     margin-top:1em;
-    @include rounded-corners;
+    -moz-border-radius:25px;
+  	-webkit-border-radius:25px;
+  	border-radius:25px;
+  	@include container-shadow;
+  	-moz-text-shadow: -1px -1px 0 rgba(53,53,53,.3);
+    -webkit-text-shadow: -1px -1px 0 rgba(53,53,53,.3);
+    text-shadow: -1px -1px 0 rgba(53,53,53,.3);
     &:hover {
-        background:#111;
+        background:#c9d827;
     };
 }
 
+button#save {
+    background:#c9d827!important;
+    float:left;
+    margin-right:5px;
+}
 input::-webkit-input-placeholder{
     color:#fff;
     font-weight:normal;
@@ -343,10 +341,10 @@ footer {
         padding-bottom:3px;
         color:#333!important;
         strong {
-          border-bottom:1px solid #ccc;
+          border-bottom:1px solid #c9d827;
         }
         &:hover {
-          color:#004400!important;
+          color:#c9d827!important;
         };
       }
     }
