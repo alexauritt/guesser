@@ -27,6 +27,7 @@ gem 'rails-backbone'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'jasmine'
 end
 
 # To use ActiveModel has_secure_password
